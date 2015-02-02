@@ -10,11 +10,18 @@ import net.minecraft.item.Item;
 
 public class OreShard extends Item {
 
-	private final String texture;
+	private static final String TEXTURE_AFG = OreShardsMod.MODID + ":shardfg";
+	private static final String TEXTURE_BG = OreShardsMod.MODID + ":shardbg";
 	
-	public OreShard(String id, String texture) {
+	private final String textureFG;
+	private final String textureAFG;
+	private final String textureBG;
+	
+	public OreShard(String id, String textureFG, String textureAFG, String textureBG) {
 		super();
-		this.texture = texture;
+		this.textureFG = textureFG;
+		this.textureAFG = (textureAFG != null && !textureAFG.isEmpty() ? textureAFG : TEXTURE_AFG);
+		this.textureBG = (textureBG != null && !textureBG.isEmpty() ? textureBG : TEXTURE_BG);
 		setUnlocalizedName(OreShardsMod.MODID + "_" + id);
 		setCreativeTab(CreativeTabs.tabMisc);
 	}
@@ -26,7 +33,7 @@ public class OreShard extends Item {
 			// you never know)
 			TextureMap map = (TextureMap) register;
 			
-			TextureHelperBase new_texture = new TextureHelperShard(this.texture, 0);
+			TextureHelperBase new_texture = new TextureHelper(this.textureFG, textureAFG, textureBG, null, false);
 			String name = new_texture.getDerivedName();
 			TextureAtlasSprite existing_texture = map.getTextureExtry(name);
 			

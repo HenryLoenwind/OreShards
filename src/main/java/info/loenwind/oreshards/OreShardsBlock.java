@@ -26,21 +26,21 @@ public class OreShardsBlock extends BlockOre {
     final private Item dumb;
     final private Block baseBlock;
     final private int baseBlockMeta;
-    final private String texture;
-    final private String dumbTexture;
+    final private String textureFG;
+    final private String textureBG;
     final private List<Double> chances;
-	final private int renderType;
+	final private String textureAFG;
     
-	public OreShardsBlock(String id, Item result, Item dumb, Block baseBlock, int baseBlockMeta, String texture, String dumbTexture, int renderType, List<Double> chances) {
+	public OreShardsBlock(String id, Item result, Item dumb, Block baseBlock, int baseBlockMeta, String textureFG, String textureBG, String textureAFG, List<Double> chances) {
 		super();
 		this.id = id;
 		this.result = result;
 		this.dumb = dumb;
 		this.baseBlock = baseBlock;
 		this.baseBlockMeta = baseBlockMeta;
-		this.texture = texture;
-		this.dumbTexture = dumbTexture;
-		this.renderType = renderType;
+		this.textureFG = textureFG;
+		this.textureBG = textureBG;
+		this.textureAFG = textureAFG;
 		this.chances = chances;
 	}
 
@@ -123,7 +123,7 @@ public class OreShardsBlock extends BlockOre {
 			// you never know)
 			TextureMap map = (TextureMap) register;
 			
-			TextureHelperBase new_texture = new TextureHelperLight(this.texture, dumbTexture, renderType);
+			TextureHelperBase new_texture = new TextureHelper(textureFG, textureAFG, textureBG, null, true);
 			String name = new_texture.getDerivedName();
 			TextureAtlasSprite existing_texture = map.getTextureExtry(name);
 			

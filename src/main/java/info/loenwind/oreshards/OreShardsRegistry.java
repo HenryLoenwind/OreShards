@@ -18,23 +18,23 @@ public class OreShardsRegistry {
 	
 	private static final Map<String, OreShard> shards = new HashMap();
 	
-	public static void registerDumb(String id, String item, int meta, String texture, int count) {
-		Dumb dumb = new Dumb(id, item, meta, texture, count);
+	public static void registerDumb(String id, String item, int meta, String textureFG, String textureAFG, String textureBG, int count) {
+		Dumb dumb = new Dumb(id, item, meta, textureFG, textureAFG, textureBG, count);
 		dumbs.add(dumb);
 	}
 
 	public static void registerOre(String id, String resultShard, String dumbShard, 
 			String baseBlock, int baseBlockMeta, 
-			String baseBlockFgTexture, String baseBlockBgTexture, int renderType, 
+			String baseBlockFgTexture, String baseBlockBgTexture, String baseBlockAFgTexture, 
 			int shardsInOre, List<Double> chances) {
-		Ore ore = new Ore(id, resultShard, dumbShard, baseBlock, baseBlockMeta, baseBlockFgTexture, baseBlockBgTexture, renderType, shardsInOre, chances);
+		Ore ore = new Ore(id, resultShard, dumbShard, baseBlock, baseBlockMeta, baseBlockFgTexture, baseBlockBgTexture, baseBlockAFgTexture, shardsInOre, chances);
 		ores.add(ore);
 	}
 
 	public static void preInit() {
 		for (Dumb dumb : dumbs) {
 			if (itemExists(dumb.item)) {
-				makeShard(dumb.id, dumb.texture);
+				makeShard(dumb.id, dumb.textureFG, dumb.textureAFG, dumb.textureBG);
 			} else {
 				OreShardsMod.logger.info("Item '"+dumb.item+"' does not exists. Skipping shard generation for '"+dumb.id+"'.");
 			}
@@ -46,7 +46,7 @@ public class OreShardsRegistry {
 				OreShard shard1 = getShard(ore.resultShard);
 				OreShard shard2 = getShard(ore.dumb);
 				if (shard1 != null && shard2 != null) {
-					Block block = new OreShardsBlock(ore.id, shard1, shard2, baseBlock, ore.baseBlockMeta, ore.baseBlockFgTexture, ore.baseBlockBgTexture, ore.renderType, ore.chances);
+					Block block = new OreShardsBlock(ore.id, shard1, shard2, baseBlock, ore.baseBlockMeta, ore.baseBlockFgTexture, ore.baseBlockBgTexture, ore.baseBlockAFgTexture, ore.chances);
 					GameRegistry.registerBlock(block, OreShardsMod.MODID + "_ore_"+ore.id);
 				}
 			} else {
@@ -69,8 +69,8 @@ public class OreShardsRegistry {
 		}
 	}
 
-	private static OreShard makeShard(String id, String texture) {
-		OreShard shard = new OreShard(id, texture);
+	private static OreShard makeShard(String id, String textureFG, String textureAFG, String textureBG) {
+		OreShard shard = new OreShard(id, textureFG, textureAFG, textureBG);
 		GameRegistry.registerItem(shard, OreShardsMod.MODID + "_shard_" + id);
 		shards.put(id, shard);
 		return shard;
@@ -144,35 +144,39 @@ public class OreShardsRegistry {
 	
 	
 	private static class Dumb {
-		public String id;
-		public String item;
-		public int meta;
-		public String texture;
-		public int count;
+		public final String textureBG;
+		public final String textureAFG;
+		public final String textureFG;
+		public final String id;
+		public final String item;
+		public final int meta;
+		public final int count;
 
-		public Dumb(String id, String item, int meta, String texture, int count) {
+		public Dumb(String id, String item, int meta, String textureFG, String textureAFG, String textureBG, int count) {
 			this.id = id;
 			this.item = item;
 			this.meta = meta;
-			this.texture = texture;
 			this.count = count;
+			this.textureFG = textureFG;
+			this.textureAFG = textureAFG;
+			this.textureBG = textureBG;
 		}
 	}
 
 	private static class Ore {
-		public int renderType;
-		public String id;
-		public String resultShard;
-		public String dumb;
-		public String baseBlock;
-		public int baseBlockMeta;
-		public String baseBlockFgTexture;
-		public String baseBlockBgTexture;
-		public int shardsInOre;
-		public List<Double> chances;
+		public final String baseBlockAFgTexture;
+		public final String id;
+		public final String resultShard;
+		public final String dumb;
+		public final String baseBlock;
+		public final int baseBlockMeta;
+		public final String baseBlockFgTexture;
+		public final String baseBlockBgTexture;
+		public final int shardsInOre;
+		public final List<Double> chances;
 
 		public Ore(String id, String resultShard, String dumb,
-				String baseBlock, int baseBlockMeta, String baseBlockFgTexture, String baseBlockBgTexture, int renderType, int shardsInOre,
+				String baseBlock, int baseBlockMeta, String baseBlockFgTexture, String baseBlockBgTexture, String baseBlockAFgTexture, int shardsInOre,
 				List<Double> chances) {
 			this.id = id;
 			this.resultShard = resultShard;
@@ -181,7 +185,7 @@ public class OreShardsRegistry {
 			this.baseBlockMeta = baseBlockMeta;
 			this.baseBlockFgTexture = baseBlockFgTexture;
 			this.baseBlockBgTexture = baseBlockBgTexture;
-			this.renderType = renderType;
+			this.baseBlockAFgTexture = baseBlockAFgTexture;
 			this.shardsInOre = shardsInOre;
 			this.chances = chances;
 		}

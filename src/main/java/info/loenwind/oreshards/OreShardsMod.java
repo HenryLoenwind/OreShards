@@ -14,7 +14,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 @Mod(modid = OreShardsMod.MODID, version = OreShardsMod.VERSION, dependencies = "after:*")
 public class OreShardsMod {
 	public static final String MODID = "oreshards";
-	public static final String VERSION = "1.0";
+	public static final String VERSION = "1.0.1";
 	public static Logger logger;
 
 	private File config;

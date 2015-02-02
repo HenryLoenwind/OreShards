@@ -1,0 +1,8 @@
+1.0.1
+
+* Re-implemented texture rendering. It now uses alpha channel textures
+* Added changelog file 
+
+1.0
+
+* Initial version
