@@ -1,0 +1,20 @@
+tile.oreshards_coal.name=Poor Coal Ore
+tile.oreshards_diamond.name=Poor Diamond Ore
+tile.oreshards_emerald.name=Poor Emerald Ore
+tile.oreshards_gold.name=Poor Gold Ore
+tile.oreshards_iron.name=Poor Iron Ore
+tile.oreshards_lapis.name=Poor Lapis Lazuli Ore
+tile.oreshards_quartz.name=Poor Nether Quartz Ore
+tile.oreshards_redstone.name=Poor Redstone Ore
+
+item.oreshards_coal.name=Coal Shard
+item.oreshards_diamond.name=Diamond Shard
+item.oreshards_emerald.name=Emerald Shard
+item.oreshards_gold.name=Gold Shard
+item.oreshards_iron.name=Iron Shard
+item.oreshards_lapis.name=Lapis Lazuli Shard
+item.oreshards_quartz.name=Nether Quartz Shard
+item.oreshards_redstone.name=Redstone Shard
+
+item.oreshards_cobble.name=Cobblestone Shard
+item.oreshards_netherrack.name=Netherrack Shard

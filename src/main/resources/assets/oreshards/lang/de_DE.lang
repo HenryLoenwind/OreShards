@@ -1,0 +1,20 @@
+tile.oreshards_coal.name=Magere Steinkohle
+tile.oreshards_diamond.name=Mageres Diamanterz
+tile.oreshards_emerald.name=Mageres Smaragderz
+tile.oreshards_gold.name=Mageres Golderz
+tile.oreshards_iron.name=Mageres Eisenerz
+tile.oreshards_lapis.name=Mageres Lapislazulierz
+tile.oreshards_quartz.name=Mageres Netherquarzerz
+tile.oreshards_redstone.name=Mageres Redstone-Erz
+
+item.oreshards_coal.name=Steinkohlenstück
+item.oreshards_diamond.name=Diamanterzstück
+item.oreshards_emerald.name=Smaragderzstück
+item.oreshards_gold.name=Golderzstück
+item.oreshards_iron.name=Eisenerzstück
+item.oreshards_lapis.name=Lapislazulierzstück
+item.oreshards_quartz.name=Netherquarzerzstück
+item.oreshards_redstone.name=Redstone-Erzstück
+
+item.oreshards_cobble.name=Bruchsteinstück
+item.oreshards_netherrack.name=Nethersteinstück
