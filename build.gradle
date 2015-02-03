@@ -17,7 +17,7 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "1.0.1"
+version = "1.0.2"
 group= "info.loenwind.oreshards" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = "oreshards"
 
@@ -48,6 +48,11 @@ processResources
     inputs.property "version", project.version
     inputs.property "mcversion", project.minecraft.version
 
+    // just throwing it here seems a bit "hacky", but hey, it works. 
+    String contents = new File('src/main/java/info/loenwind/oreshards/OreShardsMod.java').getText('UTF-8') 
+    contents = contents.replaceAll('VERSION = ".*"', 'VERSION = "' + project.version + '"')
+    new File('src/main/java/info/loenwind/oreshards/OreShardsMod.java').write(contents, 'UTF-8')
+
     // replace stuff in mcmod.info, nothing else
     from(sourceSets.main.resources.srcDirs) {
         include 'mcmod.info'
@@ -61,3 +66,13 @@ processResources
         exclude 'mcmod.info'
     }
 }
+
+jar {
+    destinationDir = file 'dist'
+    includeEmptyDirs = false
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+}
+jar.doLast { task ->
+    ant.checksum file: task.archivePath
+}
+
