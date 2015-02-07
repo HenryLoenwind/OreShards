@@ -9,3 +9,4 @@ This is based on DenseOres by RWTema. Thanks for doing the hard work ;)
 
 =========
 
+Documentation is in the <a href="https://github.com/HenryLoenwind/OreShards/wiki">Wiki</a>.
