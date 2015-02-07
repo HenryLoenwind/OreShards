@@ -15,7 +15,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 public class OreShardsMod {
 	
 	public static final String MODID = "oreshards";
-	public static final String VERSION = "1.0.2";
+	public static final String VERSION = "1.0.3";
 	public static Logger logger;
 
 	private File config;

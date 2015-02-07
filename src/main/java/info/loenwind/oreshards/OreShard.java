@@ -10,9 +10,6 @@ import net.minecraft.item.Item;
 
 public class OreShard extends Item {
 
-	private static final String TEXTURE_AFG = OreShardsMod.MODID + ":shardfg";
-	private static final String TEXTURE_BG = OreShardsMod.MODID + ":shardbg";
-	
 	private final String textureFG;
 	private final String textureAFG;
 	private final String textureBG;
@@ -20,8 +17,8 @@ public class OreShard extends Item {
 	public OreShard(String id, String textureFG, String textureAFG, String textureBG) {
 		super();
 		this.textureFG = textureFG;
-		this.textureAFG = (textureAFG != null && !textureAFG.isEmpty() ? textureAFG : TEXTURE_AFG);
-		this.textureBG = (textureBG != null && !textureBG.isEmpty() ? textureBG : TEXTURE_BG);
+		this.textureAFG = textureAFG;
+		this.textureBG = textureBG;
 		setUnlocalizedName(OreShardsMod.MODID + "_" + id);
 		setCreativeTab(CreativeTabs.tabMisc);
 	}

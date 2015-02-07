@@ -1,3 +1,7 @@
+1.0.3
+
+* shard AFG and GB textures can now be configure to "none" as intended. To use the default textures, remove the keys from the config file.
+
 1.0.2
 
 * jar file is now added and checksumed

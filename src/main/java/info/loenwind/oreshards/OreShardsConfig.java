@@ -75,6 +75,9 @@ public class OreShardsConfig {
 	private static final String DEMO_IRON_KEY = CATEGORY_DUMB + DEMO_IRON;
     private static final String DEMO_ORE_KEY = CATEGORY_ORE + "demo";
 
+    private static final String TEXTURE_SHARD_AFG = OreShardsMod.MODID + ":shardfg";
+	private static final String TEXTURE_SHARD_BG = OreShardsMod.MODID + ":shardbg";
+	
     public void loadConfig(File file) {
 
     	Configuration config = new Configuration(file);
@@ -94,8 +97,8 @@ public class OreShardsConfig {
     					config.get(cat, RESULT_ITEM, "", THE_BLOCK_ITEM_THESE_SHARDS_CRAFT_INTO).getString().trim(),
     					config.get(cat, RESULT_ITEM_META, 0, ITS_META_VALUE).getInt(0),
     					config.get(cat, RESULT_ITEM_TEXTURE, "", THE_NAME_OF_ITS_TEXTURE).getString().trim(),
-    					config.get(cat, RESULT_ITEM_TEXTURE_AFG, "", THE_NAME_OF_ITS_TEXTURE_AFG).getString().trim(),
-    					config.get(cat, RESULT_ITEM_TEXTURE_BG, "", THE_NAME_OF_ITS_TEXTURE_BG).getString().trim(),
+    					config.get(cat, RESULT_ITEM_TEXTURE_AFG, TEXTURE_SHARD_AFG, THE_NAME_OF_ITS_TEXTURE_AFG).getString().trim(),
+    					config.get(cat, RESULT_ITEM_TEXTURE_BG, TEXTURE_SHARD_BG, THE_NAME_OF_ITS_TEXTURE_BG).getString().trim(),
     					config.get(cat, RESULT_FROM_SHARDS, 9, HOW_MANY_SHARDS_MAKE_UP_THE_RESULT).getInt(0));
     		}
     	}
